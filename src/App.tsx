@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {getResourceById} from "./FhirServices/FhirServices"
+import { Patient } from 'fhir/r4';
 
 function App() {
+  const [patient, setPatient] = useState<Patient | undefined>();
+  
+  const handleClick = async () => {
+    const result = await getResourceById('Patient', 1);
+    setPatient(result);
+    console.log(result);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,7 +28,9 @@ function App() {
         >
           Learn React
         </a>
+        {/* <button onClick={()=>getResourceById("Patient",1)}>Get Resource</button> */}
       </header>
+      <button onClick={()=>{handleClick()}}>Get Resource</button>
     </div>
   );
 }
