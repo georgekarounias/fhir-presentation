@@ -32,7 +32,7 @@ const Navbar = () => {
       <nav className="c_nav-navbar">
         <div className="c_nav-logo">
           <span>
-            <img src={ImagesUrl + "/e_supermarketLogo.png"} alt="NA" style={{ "height": "10%", "width": "70%"}}></img>  
+            <a href="https://www.hl7.org/fhir/"><img src={ImagesUrl + "/fhir_logo.svg"} alt="NA" style={{ "height": "10%", "width": "70%"}}></img> </a> 
           </span>
         </div>
         <div className="c_nav-push-left">
