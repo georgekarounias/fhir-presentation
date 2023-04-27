@@ -1,9 +1,9 @@
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AppRoutes, ImagesUrl } from "../../helpers/AppConstants";
-
-//import * as _ from "lodash";
 import "./navbar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = () => {
 
@@ -117,6 +117,15 @@ const Navbar = () => {
                 onClick={() => toggleMobileMenu()}
               >
                 Συσκευές
+              </Link>
+            </li>
+            <li className="c_nav-menu-item c_nav-current-menu-item">
+              <Link
+                to={AppRoutes.Search}
+                className="c_nav-nav__link"
+                onClick={() => toggleMobileMenu()}
+              >
+                <span><FontAwesomeIcon icon={faSearch}/></span>
               </Link>
             </li>
           </ul>

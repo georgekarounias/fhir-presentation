@@ -8,6 +8,7 @@ export const AppRoutes = {
     BpMeassurments: "bp-meassurements",
     BgMeassurments: "bg-meassurements",
     Devices: "devices",
+    Search: "search-resource",
 }
 
 export const PublicUrl = process.env.PUBLIC_URL;

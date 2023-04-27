@@ -11,6 +11,7 @@ import HRPage from "../pages/Meassurements/HRPage/HRPage";
 import BGPage from "../pages/Meassurements/BGPage/BGPage";
 import BPPage from "../pages/Meassurements/BPPage/BPPage";
 import O2Page from "../pages/Meassurements/O2Page/O2Page";
+import SearchPage from "../pages/Search/SearchPage";
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
         <Route path={AppRoutes.BgMeassurments} element={<BGPage />} />
         <Route path={AppRoutes.BpMeassurments} element={<BPPage />} />
         <Route path={AppRoutes.O2Meassurments} element={<O2Page />} />
+        <Route path={AppRoutes.Search} element={<SearchPage />} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
