@@ -52,7 +52,7 @@ const Navbar = () => {
           <ul id="primary-menu" className={menuClasses}>
             <li className="c_nav-menu-item c_nav-current-menu-item">
               <Link
-                to="/home"
+                to={AppRoutes.Home}
                 className="c_nav-nav__link"
                 onClick={() => toggleMobileMenu()}
               >
@@ -61,64 +61,64 @@ const Navbar = () => {
             </li>
             <li className="c_nav-menu-item c_nav-current-menu-item">
               <Link
-                to="/products"
+                to={AppRoutes.Users}
                 className="c_nav-nav__link"
                 onClick={() => toggleMobileMenu()}
               >
-                Προϊόντα
+                Χρήστες
               </Link>
             </li>
            
             <li className="c_nav-menu-item c_nav-dropdown">
               <Link to={{}} className="c_nav-nav__link">
-                Λογαριασμός
+                Μετρήσεις
               </Link>
               <ul className="c_nav-sub-nav">
               <li>
                   <Link
-                    to={AppRoutes.Login}
+                    to={AppRoutes.HrMeassurments}
                     className="c_nav-sub-nav__link"
                     onClick={() => toggleMobileMenu()}
                   >
-                    Σύνδεση
+                    Καρδιακός ρυθμός
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to={AppRoutes.Signup}
+                    to={AppRoutes.O2Meassurments}
                     className="c_nav-sub-nav__link"
                     onClick={() => toggleMobileMenu()}
                   >
-                    Εγγραφή
+                    Οξυγόνο
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to={AppRoutes.AccountInfo}
+                    to={AppRoutes.BpMeassurments}
                     className="c_nav-sub-nav__link"
                     onClick={() => toggleMobileMenu()}
                   >
-                    Πληροφορίες Λογαριασμού
+                    Πίεση αίματος
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to={AppRoutes.Logout}
+                    to={AppRoutes.BgMeassurments}
                     className="c_nav-sub-nav__link"
                     onClick={() => toggleMobileMenu()}
                   >
-                    Αποσύνδεση
+                    Γλυκόζη αίματος
                   </Link>
                 </li>
               </ul>
             </li>
             <li className="c_nav-menu-item c_nav-current-menu-item">
               <Link
-                to={AppRoutes.Cart}
+                to={AppRoutes.Devices}
                 className="c_nav-nav__link"
-                onClick={() =>{}}
+                onClick={() => toggleMobileMenu()}
               >
-                <div>test</div>
+                Συσκευές
               </Link>
             </li>
           </ul>

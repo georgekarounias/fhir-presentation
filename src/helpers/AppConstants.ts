@@ -2,15 +2,12 @@ import { MessageInstance } from "antd/lib/message";
 
 export const AppRoutes = {
     Home: "home",
-    Products: "products",
-    FavoriteProducts: "favorite-products",
-    HistoryProducts: "history-products",
-    Cart: "cart",
-    AccountInfo: "account-info",
-    Login: "login",
-    Signup: "signup",
-    Logout: "logout",
-    CompleteOrder: "complete-order"
+    Users: "users",
+    HrMeassurments: "hr-meassurements",
+    O2Meassurments: "o2-meassurements",
+    BpMeassurments: "bp-meassurements",
+    BgMeassurments: "bg-meassurements",
+    Devices: "devices",
 }
 
 export const PublicUrl = process.env.PUBLIC_URL;
