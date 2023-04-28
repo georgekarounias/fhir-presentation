@@ -13,8 +13,8 @@ import BPPage from "../pages/Meassurements/BPPage/BPPage";
 import O2Page from "../pages/Meassurements/O2Page/O2Page";
 import SearchPage from "../pages/Search/SearchPage";
 
-const App = () => {
 
+const App = () => {
   return (
     <BrowserRouter>
     <Routes>

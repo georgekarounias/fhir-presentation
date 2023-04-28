@@ -1,0 +1,16 @@
+{
+    "menu":{
+        "home":"Αρχική",
+        "users":"Χρήστες",
+        "meassurements":"Μετρήσεις",
+        "heartRate": "Καρδιακός Ρυθμός",
+        "bloodPressure": "Πίεση Αίματος",
+        "bloodGluccose":"Γλυκόζη Αίματος",
+        "oxygenSaturation": "Συγκέτρωση O2",
+        "devices": "Συσκευές",
+        "language": "Γλώσσα"
+    },
+    "home":{
+
+    }
+}

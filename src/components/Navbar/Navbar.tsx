@@ -1,12 +1,16 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AppRoutes, ImagesUrl } from "../../helpers/AppConstants";
+import { AppRoutes, ImagesUrl, locales } from "../../helpers/AppConstants";
 import "./navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
+import i18n from "../../translation/i18n";
 
 const Navbar = () => {
 
+  const { t } = useTranslation();
+  
   const [showMenu, setShowMenu] = useState(false);
   const [menuClasses, setMenuClasses] = useState("c_nav-menu c_nav-nav-menu ");
 
@@ -54,7 +58,7 @@ const Navbar = () => {
                 className="c_nav-nav__link"
                 onClick={() => toggleMobileMenu()}
               >
-                Αρχική
+                {t('menu.home')}
               </Link>
             </li>
             <li className="c_nav-menu-item c_nav-current-menu-item">
@@ -63,13 +67,13 @@ const Navbar = () => {
                 className="c_nav-nav__link"
                 onClick={() => toggleMobileMenu()}
               >
-                Χρήστες
+                {t('menu.users')}
               </Link>
             </li>
            
             <li className="c_nav-menu-item c_nav-dropdown">
               <Link to={{}} className="c_nav-nav__link">
-                Μετρήσεις
+              {t('menu.meassurements')}
               </Link>
               <ul className="c_nav-sub-nav">
               <li>
@@ -78,7 +82,7 @@ const Navbar = () => {
                     className="c_nav-sub-nav__link"
                     onClick={() => toggleMobileMenu()}
                   >
-                    Καρδιακός ρυθμός
+                    {t('menu.heartRate')}
                   </Link>
                 </li>
                 <li>
@@ -87,7 +91,7 @@ const Navbar = () => {
                     className="c_nav-sub-nav__link"
                     onClick={() => toggleMobileMenu()}
                   >
-                    Οξυγόνο
+                    {t('menu.oxygenSaturation')}
                   </Link>
                 </li>
                 <li>
@@ -96,7 +100,7 @@ const Navbar = () => {
                     className="c_nav-sub-nav__link"
                     onClick={() => toggleMobileMenu()}
                   >
-                    Πίεση αίματος
+                    {t('menu.bloodPressure')}
                   </Link>
                 </li>
                 <li>
@@ -105,7 +109,7 @@ const Navbar = () => {
                     className="c_nav-sub-nav__link"
                     onClick={() => toggleMobileMenu()}
                   >
-                    Γλυκόζη αίματος
+                    {t('menu.bloodGluccose')}
                   </Link>
                 </li>
               </ul>
@@ -116,7 +120,7 @@ const Navbar = () => {
                 className="c_nav-nav__link"
                 onClick={() => toggleMobileMenu()}
               >
-                Συσκευές
+                {t('menu.devices')}
               </Link>
             </li>
             <li className="c_nav-menu-item c_nav-current-menu-item">
@@ -127,6 +131,20 @@ const Navbar = () => {
               >
                 <span><FontAwesomeIcon icon={faSearch}/></span>
               </Link>
+            </li>
+            <li className="c_nav-menu-item c_nav-dropdown">
+              <Link to={{}} className="c_nav-nav__link">
+              {t('menu.language')}
+              </Link>
+              <ul className="c_nav-sub-nav c_nav-sub-nav2">
+                {Object.keys(locales).map(locale =>(
+                  <li key={locale}>
+                    <a style={{ fontWeight: i18n.resolvedLanguage === locale ? 'bold' : 'normal' }} onClick={() => i18n.changeLanguage(locale)}>
+                      {(locales as {[key: string]: {title: string}})[locale].title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </li>
           </ul>
         </div>

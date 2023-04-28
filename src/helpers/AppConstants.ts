@@ -20,3 +20,8 @@ export const showErrorMessage = (messageApi:MessageInstance, message: string) =>
       content: message,
     });
   };
+
+export const locales = {
+  "en": { title: 'English' },
+  "el": { title: 'Ελληνικά' },
+};

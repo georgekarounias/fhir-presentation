@@ -1,0 +1,16 @@
+{
+    "menu":{
+        "home":"Home",
+        "users":"Users",
+        "meassurements":"Meassurements",
+        "heartRate": "Heart Rate",
+        "bloodPressure": "Blood Pressure",
+        "bloodGluccose":"Blood Gluccose",
+        "oxygenSaturation": "Oxygen Saturation",
+        "devices": "Devices",
+        "language": "Language"
+    },
+    "home":{
+
+    }
+}
