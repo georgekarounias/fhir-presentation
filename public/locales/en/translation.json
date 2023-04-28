@@ -40,5 +40,8 @@
             "birthDate": "Birth Date"
         },
         "header":"Users"
+    },
+    "filters":{
+        "userId": "User ID"
     }
 }
