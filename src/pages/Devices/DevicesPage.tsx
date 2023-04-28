@@ -8,7 +8,11 @@ export interface IDevicesPageState{
 }
 
 const columns: TableColumnsType<Device> = [
-    { title: 'DB Id', dataIndex: 'id', key: 'id' },
+  { title: 'Device ID', dataIndex: 'id', key: 'id' },
+  { title: 'Type', dataIndex: 'type', key: 'type', render: (type: any) => type?.text },
+  { title: 'Manufacturer', dataIndex: 'manufacturer', key: 'manufacturer' },
+  { title: 'Model Number', dataIndex: 'modelNumber', key: 'modelNumber' },
+  { title: 'Patient ID', dataIndex: 'patient', key: 'patient', render: (patient: any) => patient?.reference }
 ];
 
 const DevicesPage = () => {
@@ -33,7 +37,7 @@ const DevicesPage = () => {
             <h1 className="titleStyle">Συσκευές Μέτρησης</h1>
             <Table
               columns={columns}
-              dataSource={state?.devices}
+              dataSource={state?.devices?.map(device => ({ ...device, key: device.id }))} 
               size="middle"
             />
           </Col>
