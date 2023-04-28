@@ -11,7 +11,16 @@
         "language": "Language"
     },
     "homePage":{
-
+        "fhirServerTitle":"Hapi Fhir Server",
+        "fhirServerDesc":"Hapi Fhir Server provides a Database Schema and an API for CRUD operations on FHIR resources.",
+        "usersTitle":"User",
+        "usersDesc":"All users that have register their data on the system. Personal data (name and surname) are saved as hashed values to ensure anonymity.",
+        "fhirObservationTitle":"Observation",
+        "fhirObservationDesc":"Fhir observation represents a measurement. For this app vitals signs like heart rate, blood pressure, blood gluccose and Oxygen saturation are represented.",
+        "fhirDevicesTitle":"Device",
+        "fhirDevicesDesc":"Fhir resource of type Device repesents the instrument which carried out the measurement.",
+        "searchTitle":"Search",
+        "searchDesc":"This application supports search for a variety of Fhir resources."
     },
     "devicesPage":{
         "table":{
