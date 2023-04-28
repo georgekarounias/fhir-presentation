@@ -10,7 +10,26 @@
         "devices": "Devices",
         "language": "Language"
     },
-    "home":{
+    "homePage":{
 
+    },
+    "devicesPage":{
+        "table":{
+            "dbId": "Device ID",
+            "type": "Type",
+            "manufacturer": "Manufacturer",
+            "modelNumber": "Model Number",
+            "patientId": "Patient ID"
+        },
+        "header":"Devices"
+    },
+    "usersPage":{
+        "table":{
+            "dbId": "User ID",
+            "customId": "Custom ID",
+            "name": "Name",
+            "birthDate": "Birth Date"
+        },
+        "header":"Users"
     }
 }

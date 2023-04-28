@@ -10,7 +10,26 @@
         "devices": "Συσκευές",
         "language": "Γλώσσα"
     },
-    "home":{
+    "homePage":{
 
+    },
+    "devicesPage":{
+        "table":{
+            "dbId": "Αν. Συσκευής",
+            "type": "Τύπος",
+            "manufacturer": "Κατασκευαστής",
+            "modelNumber": "Αρ. Μοντέλου",
+            "patientId": "Αν. Χρήστη"
+        },
+        "header":"Συσκευές"
+    },
+    "usersPage":{
+        "table":{
+            "dbId": "Αν. Χρήστη",
+            "customId": "Αν. Χρήστη (Custom)",
+            "name": "Όνομα",
+            "birthDate": "Ημ. γέννησης"
+        },
+        "header":"Χρήστες"
     }
 }

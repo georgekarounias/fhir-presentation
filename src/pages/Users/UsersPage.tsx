@@ -1,72 +1,78 @@
-import { Col, Row, Table, TableColumnsType } from "antd";
-import { Device, Patient } from "fhir/r4";
+import { Col, Row, Spin, Table, TableColumnsType } from "antd";
+import { Patient } from "fhir/r4";
 import { useEffect, useState } from "react";
-import { getDevices, getPatients } from "../../FhirServices/FhirServices";
+import { getPatients } from "../../FhirServices/FhirServices";
+import { useTranslation } from "react-i18next";
 
-export interface IUsersPageState{
-    users?: Patient[];
-    devices?: Device[];
+export interface IUsersPageState {
+  users?: Patient[];
 }
 
-const columns: TableColumnsType<Patient> = [
-    { title: 'DB Id', dataIndex: 'id', key: 'id' },
-    { title: 'Custom Id', dataIndex: ['identifier', 0, 'value'], key: 'identifier' },
-    { 
-      title: 'Name', 
-      dataIndex: ['name', 0, 'given'], 
-      render: (givenNames, record) => {
-        const familyName = record.name && record.name[0] && record.name[0].family;
-        const fullName = givenNames && familyName ? `${givenNames.join(' ')} ${familyName}` : 'N/A';
-        return <span>{fullName}</span>;
-      }
+const UsersPage = () => {
+  const { t } = useTranslation();
+
+  const [state, setState] = useState<IUsersPageState>();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const columns: TableColumnsType<Patient> = [
+    { title: t("usersPage.table.dbId"), dataIndex: "id", key: "id" },
+    {
+      title: t("usersPage.table.customId"),
+      dataIndex: ["identifier", 0, "value"],
+      key: "identifier",
     },
-    { title: 'Birth Date', dataIndex: 'birthDate', key: 'birthDate' },
-    //{ title: 'Κατάσταση', dataIndex: 'statusName', key: 'statusName', render:(x)=><>{  
-    //   <FontAwesomeIcon icon={faCircle} style = {{ color:decideColor(x)}}/>
-    // } </>},
-    // { title: 'Διεύθυνση', dataIndex: 'addressName', key: 'addressName' },
-    // { title: 'Κόστος Παρ.', dataIndex: 'totalPrice', key: 'totalPrice', render:(x)=><>{x}&euro;</> },
-    // { title: 'Action', key: 'operation', render: (record) => <a onClick={()=> {addToFavorites(record)}}><FontAwesomeIcon icon={faTrashCan} style = {{ color: decideFavoriteColor(record.isFavoriteOrder)}}/></a> },
+    {
+      title: t("usersPage.table.name"),
+      dataIndex: ["name", 0, "given"],
+      render: (givenNames, record) => {
+        const familyName =
+          record.name && record.name[0] && record.name[0].family;
+        const fullName =
+          givenNames && familyName
+            ? `${givenNames.join(" ")} ${familyName}`
+            : "N/A";
+        return <span>{fullName}</span>;
+      },
+    },
+    {
+      title: t("usersPage.table.birthDate"),
+      dataIndex: "birthDate",
+      key: "birthDate",
+    },
   ];
 
-const UsersPage = () => {
-  
-    const [state, setState] = useState<IUsersPageState>();
+  useEffect(() => {
+    setLoading(true);
+    getPatients().then((res) => {
+      setState((prev) => {
+        return {
+          ...prev,
+          users: res,
+        };
+      });
+      setLoading(false);
+    });
+  }, []);
 
-    useEffect(() => {
-        getPatients().then((res) => {
-          setState((prev) => {
-            return {
-              ...prev,
-              users: res
-            };
-          });
-        });
-        getDevices().then((res) => {
-          setState((prev) => {
-            return {
-              ...prev,
-              devices: res
-            };
-          });
-        });
-      }, []);
-
-    return (
-      <div>
-        <Row>
-          <Col className="HeaderContent" span={20} offset={2}>
-            <h1 className="titleStyle">Χρήστες</h1>
+  return (
+    <div>
+      <Row>
+        <Col className="HeaderContent" span={20} offset={2}>
+          <h1 className="titleStyle">{t("usersPage.header")}</h1>
+          <Spin spinning={loading}>
             <Table
               columns={columns}
-              dataSource={state?.users}
+              dataSource={state?.users?.map((user) => ({
+                ...user,
+                key: user.id,
+              }))}
               size="middle"
             />
-          </Col>
-        </Row>
-        
-      </div>
-    );
-  }
-  
-  export default UsersPage;
+          </Spin>
+        </Col>
+      </Row>
+    </div>
+  );
+};
+
+export default UsersPage;
