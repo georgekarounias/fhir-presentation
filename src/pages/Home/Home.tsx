@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import "./Home.css";
 import { Card, Col, Row } from "antd";
 import { useTranslation } from "react-i18next";
 import {
@@ -59,8 +58,8 @@ const Home = () => {
   return (
     <Row gutter={[16, 16]}>
       {cardData.map((card) => (
-        <Col {...responsiveCols} key={card.id}>
-          <Card title={card.title} cover={card.icon}>
+        <Col {...responsiveCols} key={card.id} >
+          <Card title={card.title} cover={card.icon} className="card-class">
             <Card.Meta description={card.description} />
           </Card>
         </Col>

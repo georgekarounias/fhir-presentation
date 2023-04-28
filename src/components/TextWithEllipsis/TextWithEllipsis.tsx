@@ -19,7 +19,7 @@ const TextWithEllipsis = (props: ITextWithEllipsisProps) => {
       onClick={handleClick}
       style={{ cursor: 'pointer' }}
     >
-      {showFull ? props.text : `${props.text.slice(0, 100)}...`}
+      {showFull ? props.text : `${props.text.substring(0, 90)}...`}
     </Text>
   );
 };
