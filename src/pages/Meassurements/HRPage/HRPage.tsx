@@ -1,7 +1,9 @@
+import ObservationsFilters from "../../../components/ObservationFilters/ObservationsFilters";
+
 const HRPage = () => {
     return (
       <div>
-          HRPage
+          <ObservationsFilters />
       </div>
     )
   }
