@@ -6,6 +6,7 @@ import { useState } from "react";
 import { getPatientsObesrvations } from "../../../FhirServices/FhirServices";
 import { Observation } from "fhir/r4";
 import Appsettings from '../../../helpers/AppSettings';
+import SingleValueChart, { IDataPoint } from "../../../components/Charts/SingleValueChart";
 
 const HRPage = () => {
   const { t } = useTranslation();
@@ -37,6 +38,13 @@ const HRPage = () => {
       <ObservationsFilters
         onSubmitFilters={(filterState) => searchResources(filterState)}
       />
+      {hrObservations?.length &&<SingleValueChart data={hrObservations.map(x=> {
+        const datapoint: IDataPoint = {
+          time : x.valueTime?.toString() ?? "",
+          value : x.valueQuantity?.value ?? 0
+        }
+        return datapoint
+      })}/>}
     </div>
   );
 };
