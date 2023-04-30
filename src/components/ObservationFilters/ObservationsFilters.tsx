@@ -1,29 +1,75 @@
-import { DatePicker, Input, Space } from "antd";
+import { Button, DatePicker, Input, Space, Tooltip } from "antd";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { SearchOutlined } from "@ant-design/icons";
 
+export interface IObservationState {
+  patientId?: number;
+  startDate?: Date;
+  endDate?: Date;
+}
 
-const ObservationsFilters = () => {
+export interface IObservationProps {
+  onSubmitFilters: (filterState: IObservationState) => void;
+}
+
+const ObservationsFilters = (props: IObservationProps) => {
   const { t } = useTranslation();
   const { RangePicker } = DatePicker;
 
-  const onUserIdChange = (e:any)=>{
-    debugger;
-    console.log(e.currentTarget.value);
-  }
+  const [state, setState] = useState<IObservationState>();
 
-  const onRangePickerChange = (e:any)=>{
-    if(!e){
-        return;
+  const onUserIdChange = (e: any) => {
+    console.log(e.currentTarget.value);
+    const patientId = e.currentTarget.value as number;
+    setState((prev) => {
+      return {
+        ...prev,
+        patientId: patientId,
+      };
+    });
+  };
+
+  const onRangePickerChange = (dates: any) => {
+    if (!dates || !Array.isArray(dates) || dates.length !== 2) {
+      return;
     }
-    debugger;
-    console.log(e[0]);
+    const startDate = dates[0].toDate();
+    const endDate = dates[1].toDate();
+    setState((prev) => {
+      return {
+        ...prev,
+        startDate: startDate,
+        endDate: endDate,
+      };
+    });
+  };
+
+  const submit = ()=>{
+    if(!state)
+    {
+      return;
+    }
+    props.onSubmitFilters(state);
   }
 
   return (
     <>
       <Space direction="horizontal" size={12}>
-        <Input placeholder={t("filters.userId") ?? ""} onChange={(e)=>{onUserIdChange(e)}}/>
-        <RangePicker onChange={(e)=>{onRangePickerChange(e)}}/>
+        <Input
+          placeholder={t("filters.userId") ?? ""}
+          onChange={(e) => {
+            onUserIdChange(e);
+          }}
+        />
+        <RangePicker
+          onChange={(e) => {
+            onRangePickerChange(e);
+          }}
+        />
+        <Tooltip title="search">
+          <Button shape="circle" onClick={()=>{submit()}} icon={<SearchOutlined />} />
+        </Tooltip>
       </Space>
     </>
   );
