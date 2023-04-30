@@ -40,7 +40,7 @@ const HRPage = () => {
       />
       {hrObservations?.length &&<SingleValueChart data={hrObservations.map(x=> {
         const datapoint: IDataPoint = {
-          time : x.valueTime?.toString() ?? "",
+          time : x.effectiveDateTime ?? "",
           value : x.valueQuantity?.value ?? 0
         }
         return datapoint

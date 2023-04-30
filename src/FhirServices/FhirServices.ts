@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Bundle, Device, Observation, ObservationComponent, Patient } from 'fhir/r4';
 import Appsettings from '../helpers/AppSettings';
+import { convertDatetoIsoStringWithoutTimeZone } from '../helpers/DateHandler';
 
 export const getResourceById = async (resourceType: string, id: number): Promise<Patient> => {
   const response = await axios.get(`/${resourceType}/${id}`);
@@ -33,11 +34,11 @@ export const getDevices = async () : Promise<Device[]>  => {
 };
 
 export const getPatientsObesrvations = async (patientId: number, startDate: Date, endDate: Date, code: string): Promise<Observation[]> =>{
-  const startDateStr = startDate.toISOString();
-  const endDateStr = endDate.toISOString()
+  const startDateStr = convertDatetoIsoStringWithoutTimeZone(startDate).slice(0,10);
+  const endDateStr = convertDatetoIsoStringWithoutTimeZone(endDate).slice(0, 10);
+  const url = Appsettings.BaseUrl + `Observation?patient=${patientId}&date=ge${startDateStr}&date=le${endDateStr}&code=${code}&_sort=date&_format=json`;
   const bundle = await axios.get<Bundle>(
-    //http://localhost:8080/fhir/Observation?patient=1&_value-date=ge2023-04-01&_value-date=le2023-04-30&_sort=value-date
-    Appsettings.BaseUrl + `Observation?patient=${patientId}&_value-date=ge${startDateStr}&_value-date=le${endDateStr}&_sort=value-date&_format=json`
+    url
   );
   const resources = bundle.data.entry;
   if(!resources){
