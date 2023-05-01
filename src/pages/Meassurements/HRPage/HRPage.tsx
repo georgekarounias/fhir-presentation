@@ -50,7 +50,7 @@ const HRPage = () => {
           onSubmitFilters={(filterState) => searchResources(filterState)}
         />
         <Spin spinning={loading}>
-          {hrObservations?.length > 0 && (
+          {hrObservations && (
             <div>
               {setInfoMessagge(
                 t("infoMessage"),
