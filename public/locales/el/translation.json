@@ -45,5 +45,19 @@
         "userId": "Αν.Χρήστη",
         "header":"Αναζήτηση αποτελεσμάτων για συγκεκριμμένο χρήστη και χρονική περίοδο."
     },
-    "infoMessage": "Βρέθηκαν _recordsLength_ εγγραφές για τον χρήστη με αναγμωριστικό: _userId_ από _startDate_ μέχρι _endDate_"
+    "infoMessage": "Βρέθηκαν _recordsLength_ εγγραφές για τον χρήστη με αναγμωριστικό: _userId_ από _startDate_ μέχρι _endDate_",
+    "SingleValueChart":{
+        "Time": "Ώρα Μέτρησης",
+        "Value": "Τιμή",
+        "ChartHeader": "Γράφημα Δεδομένων"
+    },
+    "BasicStatistics":{
+        "Header": "Στατιστικά",
+        "Min": "Ελάχιστο",
+        "Mean": "Μέσο",
+        "Max": "Μέγιστο"
+    },
+    "heartRatePage":{
+        "header":"Καρδιακός ρυθμός"
+    }
 }

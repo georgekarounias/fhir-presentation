@@ -70,6 +70,7 @@ const HRPage = () => {
                 };
                 return datapoint;
               })}
+              showTable={true}
             />
           )}
         </Spin>
