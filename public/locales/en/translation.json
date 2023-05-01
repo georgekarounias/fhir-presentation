@@ -43,5 +43,6 @@
     },
     "filters":{
         "userId": "User ID"
-    }
+    },
+    "infoMessage": "Found _recordsLength_ records for user with id: _userId_ from _startDate_ to _endDate_"
 }

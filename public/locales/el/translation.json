@@ -43,5 +43,6 @@
     },
     "filters":{
         "userId": "Αν.Χρήστη"
-    }
+    },
+    "infoMessage": "Βρέθηκαν _recordsLength_ εγγραφές για τον χρήστη με αναγμωριστικό: _userId_ από _startDate_ μέχρι _endDate_"
 }
