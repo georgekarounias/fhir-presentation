@@ -45,31 +45,39 @@ const ObservationsFilters = (props: IObservationProps) => {
     });
   };
 
-  const submit = ()=>{
-    if(!state)
-    {
+  const submit = () => {
+    if (!state) {
       return;
     }
     props.onSubmitFilters(state);
-  }
+  };
 
   return (
     <>
-      <Space direction="horizontal" size={12}>
-        <Input
-          placeholder={t("filters.userId") ?? ""}
-          onChange={(e) => {
-            onUserIdChange(e);
-          }}
-        />
-        <RangePicker
-          onChange={(e) => {
-            onRangePickerChange(e);
-          }}
-        />
-        <Tooltip title="search">
-          <Button shape="circle" onClick={()=>{submit()}} icon={<SearchOutlined />} />
-        </Tooltip>
+      <Space direction="vertical" size={12}>
+        <div>{t("filters.header")}</div>
+        <Space direction="horizontal" size={12}>
+          <Input
+            placeholder={t("filters.userId") ?? ""}
+            onChange={(e) => {
+              onUserIdChange(e);
+            }}
+          />
+          <RangePicker
+            onChange={(e) => {
+              onRangePickerChange(e);
+            }}
+          />
+          <Tooltip title="search">
+            <Button
+              shape="circle"
+              onClick={() => {
+                submit();
+              }}
+              icon={<SearchOutlined />}
+            />
+          </Tooltip>
+        </Space>
       </Space>
     </>
   );
