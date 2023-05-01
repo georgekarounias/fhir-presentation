@@ -9,15 +9,17 @@ import Appsettings from "../../../helpers/AppSettings";
 import SingleValueChart, {
   IDataPoint,
 } from "../../../components/Charts/SingleValueChart";
-import { Space } from "antd";
-import { convertDatetoIsoStringWithoutTimeZone } from "../../../helpers/DateHandler";
+import { Space, Spin } from "antd";
+import { setInfoMessagge } from "../../../helpers/Messaging";
 
 const HRPage = () => {
   const { t } = useTranslation();
 
   const [loading, setLoading] = useState<boolean>(false);
   const [hrObservations, setHrObservations] = useState<Observation[]>([]);
-  const [parentFilterState, setParentFilterState] = useState<IObservationState|undefined>(undefined);
+  const [parentFilterState, setParentFilterState] = useState<
+    IObservationState | undefined
+  >(undefined);
 
   const searchResources = (filterState: IObservationState) => {
     if (
@@ -28,6 +30,7 @@ const HRPage = () => {
       return;
     }
     setParentFilterState(filterState);
+    setLoading(true);
     getPatientsObesrvations(
       filterState.patientId,
       filterState.startDate,
@@ -35,6 +38,7 @@ const HRPage = () => {
       Appsettings.HeartRateCode
     ).then((res) => {
       setHrObservations(res);
+      setLoading(false);
     });
   };
 
@@ -45,22 +49,30 @@ const HRPage = () => {
         <ObservationsFilters
           onSubmitFilters={(filterState) => searchResources(filterState)}
         />
-        {hrObservations?.length>0 && (
-          <div>
-            {t("infoMessage").replace("_recordsLength_", hrObservations.length.toString()).replace("_userId_", parentFilterState?.patientId?.toString() ?? "_").replace("_startDate_", parentFilterState?.startDate ? convertDatetoIsoStringWithoutTimeZone(parentFilterState?.startDate).slice(0,10) :"_").replace("_endDate_", parentFilterState?.endDate ? convertDatetoIsoStringWithoutTimeZone(parentFilterState?.endDate).slice(0,10) :"_")}
-          </div>
-        )}
-        {hrObservations?.length > 0 && (
-          <SingleValueChart
-            data={hrObservations.map((x) => {
-              const datapoint: IDataPoint = {
-                time: x.effectiveDateTime ?? "",
-                value: x.valueQuantity?.value ?? 0,
-              };
-              return datapoint;
-            })}
-          />
-        )}
+        <Spin spinning={loading}>
+          {hrObservations?.length > 0 && (
+            <div>
+              {setInfoMessagge(
+                t("infoMessage"),
+                hrObservations.length,
+                parentFilterState?.patientId,
+                parentFilterState?.startDate,
+                parentFilterState?.endDate
+              )}
+            </div>
+          )}
+          {hrObservations?.length > 0 && (
+            <SingleValueChart
+              data={hrObservations.map((x) => {
+                const datapoint: IDataPoint = {
+                  time: x.effectiveDateTime ?? "",
+                  value: x.valueQuantity?.value ?? 0,
+                };
+                return datapoint;
+              })}
+            />
+          )}
+        </Spin>
       </Space>
     </div>
   );
