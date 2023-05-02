@@ -60,7 +60,7 @@ const BloodPressureChart = (props: IBPChartProps) => {
         <div style={{ margin: "0px 0px 0px 70px", color: "#d17171" }}>
           <b>{t("SingleValueChart.ChartHeader")}</b>
         </div>
-        <LineChart width={600} height={400} data={props.data}>
+        <LineChart width={500} height={300} data={props.data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="time" />
           <YAxis />
