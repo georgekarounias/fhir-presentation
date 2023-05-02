@@ -45,7 +45,7 @@
         "userId": "User ID",
         "header":"Search results for specific user and time period"
     },
-    "infoMessage": "Found _recordsLength_ records for user with id: _userId_ from _startDate_ to _endDate_",
+    "infoMessage": "Found _0_ records for user with id: _1_ from _2_ to _3_",
     "SingleValueChart":{
         "Time": "Time of measurement",
         "Value": "Value",
