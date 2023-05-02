@@ -68,5 +68,10 @@
     },
     "OxygenSaturationPage":{
         "header": "Συγκέντρωση Ο2"
+    },
+    "BloodPressureChart":{
+        "Time": "Ώρα Μέτρησης",
+        "systolic": "Συστολική",
+        "diastolic": "Διαστολική"
     }
 }

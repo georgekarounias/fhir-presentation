@@ -68,5 +68,10 @@
     },
     "οxygenSaturationPage":{
         "header": "Oxygen Saturation"
+    },
+    "BloodPressureChart":{
+        "Time": "Time",
+        "systolic": "Systolic",
+        "diastolic": "Diastolic"
     }
 }
