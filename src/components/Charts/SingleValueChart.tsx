@@ -1,5 +1,4 @@
 import { Space, Table, TableColumnsType } from "antd";
-import React from "react";
 import { useTranslation } from "react-i18next";
 import {
   LineChart,

@@ -1,11 +1,16 @@
-const BGPage = () => {
-  return (
-    <div>
-        BGPage
+import { useTranslation } from "react-i18next";
+import Appsettings from "../../../helpers/AppSettings";
+import BasePage from "../BasePage/BasePage";
 
-        tha epilegei o xrhsths id tou patient kai tha pernei grafima me ta data toy
-    </div>
-  )
-}
-  
+const BGPage = () => {
+  const { t } = useTranslation();
+
+  return (
+    <BasePage
+      meassurementCode={Appsettings.BloodGluccoseCode}
+      pageHeader={t("bloodGlucosePage.header")}
+    />
+  );
+};
+
 export default BGPage;

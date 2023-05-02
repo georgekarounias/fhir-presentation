@@ -59,5 +59,14 @@
     },
     "heartRatePage":{
         "header":"Καρδιακός ρυθμός"
+    },
+    "bloodGlucosePage":{
+        "header":"Γλυκόζη αίματος"
+    },
+    "bloodPressurePage":{
+        "header":"Πίεση αίματος"
+    },
+    "OxygenSaturationPage":{
+        "header": "Συγκέντρωση Ο2"
     }
 }
