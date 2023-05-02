@@ -27,7 +27,7 @@ const App = () => {
         <Route path={AppRoutes.BgMeassurments} element={<BGPage />} />
         <Route path={AppRoutes.BpMeassurments} element={<BPPage />} />
         <Route path={AppRoutes.O2Meassurments} element={<O2Page />} />
-        <Route path={AppRoutes.Search} element={<SearchPage />} />
+        {/* <Route path={AppRoutes.Search} element={<SearchPage />} /> */}
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>

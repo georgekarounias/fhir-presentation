@@ -123,7 +123,7 @@ const Navbar = () => {
                 {t('menu.devices')}
               </Link>
             </li>
-            <li className="c_nav-menu-item c_nav-current-menu-item">
+            {/* <li className="c_nav-menu-item c_nav-current-menu-item">
               <Link
                 to={AppRoutes.Search}
                 className="c_nav-nav__link"
@@ -131,7 +131,7 @@ const Navbar = () => {
               >
                 <span><FontAwesomeIcon icon={faSearch}/></span>
               </Link>
-            </li>
+            </li> */}
             <li className="c_nav-menu-item c_nav-dropdown">
               <Link to={{}} className="c_nav-nav__link">
               {t('menu.language')}
