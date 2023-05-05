@@ -34,9 +34,17 @@ export const getDevices = async () : Promise<Device[]>  => {
 };
 
 export const getPatientsObesrvations = async (patientId: number, startDate: Date, endDate: Date, code: string): Promise<Observation[]> =>{
+
   const startDateStr = convertDatetoIsoStringWithoutTimeZone(startDate).slice(0,10);
   const endDateStr = convertDatetoIsoStringWithoutTimeZone(endDate).slice(0, 10);
-  const url = Appsettings.BaseUrl + `Observation?patient=${patientId}&date=ge${startDateStr}&date=le${endDateStr}&code=${code}&_sort=date&_format=json`;
+
+  const getObservationCountUrl = Appsettings.BaseUrl + `Observation?patient=${patientId}&date=ge${startDateStr}&date=le${endDateStr}&code=${code}&_count=0&_format=json`;
+  const bundleCount = await axios.get<Bundle>(
+    getObservationCountUrl
+  );
+  const count = bundleCount.data.total as number;
+
+  const url = Appsettings.BaseUrl + `Observation?patient=${patientId}&date=ge${startDateStr}&date=le${endDateStr}&code=${code}&_sort=date&_count=${count}&_format=json`;
   const bundle = await axios.get<Bundle>(
     url
   );
