@@ -11,7 +11,7 @@ export const getResourceById = async (resourceType: string, id: number): Promise
 
 export const getPatients = async () : Promise<Patient[]>  => {
   const bundle = await axios.get<Bundle>(
-    Appsettings.BaseUrl + "Patient?_format=json"
+    Appsettings.BaseUrl + "Patient?_format=json&_tag="+Appsettings.TagName+"&_count=500"
   );
   const resources = bundle.data.entry;
   if(!resources){
@@ -23,7 +23,7 @@ export const getPatients = async () : Promise<Patient[]>  => {
 
 export const getDevices = async () : Promise<Device[]>  => {
   const bundle = await axios.get<Bundle>(
-    Appsettings.BaseUrl + "Device?_format=json"
+    Appsettings.BaseUrl + "Device?_format=json&_count=500&_tag="+Appsettings.TagName
   );
   const resources = bundle.data.entry;
   if(!resources){
